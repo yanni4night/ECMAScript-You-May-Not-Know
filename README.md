@@ -27,8 +27,8 @@ let obj = Object.create(proto, {
 - `Object.is` can distinguish *+0/-0* and *NaN*:
 
 ```javascript
-Object.is(+0, -0)// false
-Object.is(NaN, NaN)// true
+Object.is(+0, -0); // false
+Object.is(NaN, NaN); // true
 ```
 
 - `Object.keys` returns names of  *own enumerabel* properties.`Object.getOwnPropertyNames` returns all.
@@ -160,8 +160,8 @@ with(obj) {
 - String.prototype.startsWith* accepts a *position* as the second argument, *String.prototype.endsWith* accepts a *endPosition* as the second argument:
 
 ```javascript
-"ABCD".startsWith("BCD", 1) // true
-"ABCD".endsWith("ABC", 3) // true
+"ABCD".startsWith("BCD", 1); // true
+"ABCD".endsWith("ABC", 3); // true
 ```
 
 - String.prototype.substring(indexStart, indexEnd)*. If *indexStart* is greater than *indexEnd*, then the effect of substring() is as if the two arguments were swapped. For example:
@@ -172,7 +172,7 @@ with(obj) {
 
 ## 4. Indexed Collections
 
-- *Array*()* is equal to *new Array*()*.
+- *Array()* is equal to *new Array()*.
 - The *Array.from()* method creates a new Array instance from an array-like or iterable object:
 
 ```javascript
