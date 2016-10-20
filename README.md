@@ -320,5 +320,3 @@ JSON.stringify({a:1, b:2}, function(key, value) {
 
 3. Object.prototype.toString.call(JSON) == '[object JSON]'
 
-## 6. Control Abstraction Objects
-
