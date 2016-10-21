@@ -10,7 +10,7 @@
 
 ## 2. Fundamental Objects
 
-- `Object.create` accept a *prototype* argument and a *properties* argument:
+- `Object.create` accepts a *prototype* argument and a *properties* argument:
 
 ```javascript
 let proto = {bar: 'max'};
@@ -24,14 +24,14 @@ let obj = Object.create(proto, {
 });
 ```
 
-- `Object.is` can distinguish *+0/-0* and *NaN*:
+- `Object.is` can compare *+0/-0* and *NaN*:
 
 ```javascript
 Object.is(+0, -0); // false
 Object.is(NaN, NaN); // true
 ```
 
-- `Object.keys` returns names of  *own enumerabel* properties.`Object.getOwnPropertyNames` returns all.
+- `Object.keys` returns names of *own enumerable* properties.`Object.getOwnPropertyNames` returns both enumerable and non-enumerable ones.
 - `new Symbol()` throws a *TypeError* because it's not a constructor.
 - The  `Symbol.for(key)` method searches for existing symbols in a runtime-wide symbol registry with the given key and returns it if found. Otherwise a new symbol gets created in the global symbol registry with this key. The `Symbol.keyFor(sym)` method retrieves a shared symbol key from the global symbol registry for the given symbol.
 
@@ -150,10 +150,6 @@ with(obj) {
   console.log(bar); // ReferenceError: bar is not defined
 }
 ```
-
-
-
-
 
 ## 3. Text Processing
 
@@ -297,7 +293,7 @@ for (let letter of vs) {
 
 ## 5. Structured Data
 
-- Notice **reviver** argument in `JSON.parse(text[, reviver])`:
+- Note **reviver** argument in `JSON.parse(text[, reviver])`:
 
 ```javascript
 JSON.parse('{"a":1,"b":2}', function(key, value) {
@@ -309,7 +305,7 @@ JSON.parse('{"a":1,"b":2}', function(key, value) {
 // {a: 3, b: 2}
 ```
 
-- Notice **replacer** argument in `JSON.stringify(value [,replacer [,space]])`:
+- Note **replacer** argument in `JSON.stringify(value [,replacer [,space]])`:
 
 ```javascript
 JSON.stringify({a:1, b:2}, function(key, value) {
@@ -319,3 +315,14 @@ JSON.stringify({a:1, b:2}, function(key, value) {
 ```
 
 - Object.prototype.toString.call(JSON) == '[object JSON]'
+
+## 6. Control Abstraction Objects
+
++ Note that *GeneratorFunction* is not a global object. It could be obtained by evaluating the following code:
+
+```javascript
+var GeneratorFunction = (function*(){}).constructor;
+var g = new GeneratorFunction("a", "yield a * 2");
+var iterator = g(10);
+console.log(iterator.next().value); // 20
+```
